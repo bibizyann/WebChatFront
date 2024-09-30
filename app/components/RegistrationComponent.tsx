@@ -5,8 +5,7 @@ import React, { useState } from "react";
 const RegistrationComponent: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
-    confirmPassword: "",
+    password: ""
   });
 
   const handleChange = (e) => {
