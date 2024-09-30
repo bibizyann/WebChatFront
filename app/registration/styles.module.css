@@ -1,0 +1,51 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-grow: 2;
+  width: 100%;
+  background: linear-gradient(180deg, #fafafa 0%, #c2cde9 444.98%);
+}
+
+.imageBlock {
+  width: auto;
+  min-height: 100vh;
+  margin: 0;
+  object-fit: cover;
+
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  margin: auto;
+  margin-top: 172px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px 0 #19253d1c;
+}
+
+.full {
+  width: 90%;
+  max-width: 458px;
+}
+
+.short {
+  width: 100%;
+  max-width: 410px;
+}
