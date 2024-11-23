@@ -2,22 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "General Sans", sans-serif;
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: #dfdff0;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'general';
+    src: url('../app/fonts/general.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'zentry';
+    src: url('../app/fonts/zentry-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'geistmono';
+    src: url('../app/fonts/GeistMonoVF.woff') format('woff');
+  }
 }
 
 @layer utilities {

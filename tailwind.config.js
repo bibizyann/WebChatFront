@@ -7,9 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        zentry: ['zentry', 'sans-serif'],
+        general: ['general', 'sans-serif'],
+        geistmono: ['geistmono', 'sans-serif'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        dark: {
+          1: '#1C1F2E',
+          2: '#161925',
+        },
       },
     },
   },

@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import Head from "next/head";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,12 +23,11 @@ export default function RootLayout({
           <meta name="Рега" content="Рега" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <header></header>
-          <main>{children}</main>
-          <footer>{/* <p>© 2024 My Next.js App</p> */}</footer>
+        <body className={`${inter.className} bg-dark-2`}>
+          {children}
+          <footer>
+            {/* <p>© 2024 My Next.js App</p> */}
+          </footer>
         </body>
       </html>
     </>
