@@ -2,6 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
+import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
     return (
@@ -12,6 +13,12 @@ const Navbar = () => {
             </Link>
 
             <div className='flex-between gap-5'>
+                <Button asChild variant="outline" className='bg-gradient'>
+                    <a href="/registration" style={{"text-decoration": null}} className='text-white'>
+                        Sign Up
+                    </a>
+                </Button>
+
                 <MobileNav />
             </div>
         </nav>

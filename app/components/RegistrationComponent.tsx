@@ -1,7 +1,9 @@
 "use client";
+
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+
 const RegistrationComponent: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",

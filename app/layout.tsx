@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Head from "next/head";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['200'] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +23,7 @@ export default function RootLayout({
           <meta name="Рега" content="Рега" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body className={`${inter.className} bg-dark-2`}>
+        <body className={`${poppins.className} bg-dark-2`}>
           {children}
           <footer>
             {/* <p>© 2024 My Next.js App</p> */}
