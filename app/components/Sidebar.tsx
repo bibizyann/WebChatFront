@@ -3,7 +3,7 @@
 import React from 'react';
 import {sidebarLinks} from "../../env-constants";
 import {usePathname} from "next/navigation";
-import {cn} from "../../utils/utils";
+import {cn} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,7 +12,7 @@ const Sidebar = () => {
     return (
         <section className="sticky left-0 top-0 flex h-screen w-fit flex-col justify-content-between bg-dark-1 p-6
          pt-28 text-white max-sm:hidden lg:w-[264px]">
-            <div className='flex flex- flex-col gap-6'>
+            <div className='flex flex-1 flex-col gap-6'>
                 {sidebarLinks.map((item) => {
                     const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
 
