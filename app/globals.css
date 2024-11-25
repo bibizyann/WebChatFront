@@ -80,6 +80,12 @@ body {
   }
 }
 
+.glassmorphism {
+  background: rgba(188, 150, 100, 0.50);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -19,7 +19,8 @@ module.exports = {
   				'2': '#161925'
   			},
   			blue: {
-  				'1': '#0E78F9'
+  				'1': '#0E78F9',
+				'2': '#C9DFFF'
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -62,6 +63,9 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
+		backgroundImage: {
+			business: "url('/fever-banner.jpg')",
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
