@@ -23,7 +23,7 @@ export default function RootLayout({
           <meta name="Рега" content="Рега" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body className={`${poppins.className} bg-blue-2 dark:bg-dark-2`}>
+        <body className={`${poppins.className} dark:bg-dark-2`}>
           {children}
           <footer>
             {/* <p>© 2024 My Next.js App</p> */}

@@ -7,7 +7,7 @@ import ThemeToggle from "@/app/components/ThemeToggle";
 
 const Navbar = () => {
     return (
-        <nav className='flex flex-between fixed z-50 w-full bg-cyan-1 dark:bg-dark-1 px-6 py-4 lg:px-10'>
+        <nav className='flex flex-between fixed z-50 w-full bg-blue-3 dark:bg-dark-1 px-6 py-4 lg:px-10'>
             <Link href='/' className='flex items-center gap-1'>
                 <Image src="/icons/logo.png" width={30} height={30} alt="WebChatMIREA" className='max-sm:size-10'/>
                 <p className='text-[26px] font-zentry text-white max-sm:hidden'>WebChatMIREA</p>

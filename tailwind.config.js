@@ -20,7 +20,8 @@ module.exports = {
   			},
   			blue: {
   				'1': '#0E78F9',
-				'2': '#C9DFFF'
+				'2': '#C9DFFF',
+				'3': '#355ca7',
   			},
 			cyan: {
 				'1': '#0891b2',
