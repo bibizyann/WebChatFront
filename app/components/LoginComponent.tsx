@@ -42,7 +42,7 @@ const LoginComponent: React.FC = () => {
                 src="/icons/logo.png"
                 className="mx-auto h-20 w-auto"
             />
-            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
               Sign in to your account
             </h2>
           </div>
@@ -50,7 +50,7 @@ const LoginComponent: React.FC = () => {
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 dark:text-white">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -62,7 +62,10 @@ const LoginComponent: React.FC = () => {
                       onChange={handleChange}
                       required
                       autoComplete="email"
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+                      className="block w-full rounded-md dark:bg-[#545464] px-3 py-1.5 text-base
+                      text-gray-900 dark:text-white outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-[#767676e6]
+                      placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2
+                      focus:outline-blue-600 sm:text-sm/6"
                       placeholder="example@mail.ru"
                   />
                 </div>
@@ -70,7 +73,7 @@ const LoginComponent: React.FC = () => {
 
               <div>
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
+                  <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900 dark:text-white">
                     Password
                   </label>
                   <div className="text-sm">
@@ -88,7 +91,10 @@ const LoginComponent: React.FC = () => {
                       onChange={handleChange}
                       required
                       autoComplete="current-password"
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+                      className="block w-full rounded-md dark:bg-[#545464] px-3 py-1.5 text-base
+                      text-gray-900 dark:text-white outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-[#767676e6]
+                      placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2
+                      focus:outline-blue-600 sm:text-sm/6"
                   />
                 </div>
               </div>

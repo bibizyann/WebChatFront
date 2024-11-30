@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
-import RegistrationComponent from "../components/RegistrationComponent";
+import RegistrationComponent from "../../../components/RegistrationComponent";
 import styles from "./styles.module.css";
 
 const Registration: React.FC = () => {
