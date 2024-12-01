@@ -17,7 +17,7 @@ const Navbar = () => {
             </div>
             <div className='flex-between gap-5'>
                 <Button asChild variant="outline" className='bg-gradient hover:bg-white hover:text-black border-white' >
-                    <a href="/registration" style={{"text-decoration": null}} className='text-white'>
+                    <a href="/registration" className='text-white no-underline'>
                         Sign Up
                     </a>
                 </Button>

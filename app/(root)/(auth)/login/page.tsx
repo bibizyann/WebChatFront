@@ -1,8 +1,7 @@
 "use client";
-import classNames from "classnames";
+
 import React from "react";
 import LoginComponent from "../../../components/LoginComponent";
-import style from "./styles.module.css";
 
 const Login: React.FC = () => {
   return (

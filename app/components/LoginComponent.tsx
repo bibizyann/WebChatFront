@@ -77,7 +77,7 @@ const LoginComponent: React.FC = () => {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a href="#" className="font-semibold text-blue-600 hover:text-blue-500">
+                    <a href="#" className="font-semibold text-blue-600 hover:text-blue-500 no-underline">
                       Forgot password?
                     </a>
                   </div>
@@ -111,8 +111,8 @@ const LoginComponent: React.FC = () => {
 
             <p className="mt-10 text-center text-sm/6 text-gray-500">
               Not a member?{' '}
-              <a href="#" className="font-semibold text-blue-600 hover:text-blue-500">
-                Start a 14 day free trial
+              <a href="/registration" className="font-semibold text-blue-600 hover:text-blue-500 no-underline">
+                Sign Up
               </a>
             </p>
           </div>
