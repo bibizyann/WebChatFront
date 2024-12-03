@@ -50,9 +50,11 @@ const LoginComponent: React.FC = () => {
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 dark:text-white">
-                  Email address
-                </label>
+                <div className="flex items-center justify-between">
+                  <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 dark:text-white">
+                    Email address
+                  </label>
+                </div>
                 <div className="mt-2">
                   <input
                       id="email"
