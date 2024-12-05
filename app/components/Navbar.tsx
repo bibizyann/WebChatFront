@@ -9,7 +9,6 @@ import CardComponent from "@/app/components/CardComponent";
 
 const Navbar = async () => {
     const user = await getUser()
-    console.log(user)
 
     return (
         <nav className='flex flex-between fixed z-50 w-full bg-blue-3 dark:bg-dark-1 px-6 py-4 lg:px-10'>
@@ -20,7 +19,7 @@ const Navbar = async () => {
             <div className="flex flex-betwween gap-1 justify-end">
                 <ThemeToggle/>
             </div>
-            <div className='flex-between gap-5'>
+            <div className='flex-between'>
                 {user && user?.Id ? (
                     <CardComponent params={user}/>
                 ) : (

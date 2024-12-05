@@ -37,7 +37,7 @@ const CardComponent = ({params} : {params: user}) => {
                 <div>
                     <Avatar>
                         <AvatarImage src={params.AvatarUrl} alt="@shadcn"/>
-                        <AvatarFallback className="dark:bg-gray-500">CN</AvatarFallback>
+                        <AvatarFallback className="dark:bg-gray-500">{params.Username.substring(0,1).toUpperCase()}</AvatarFallback>
                     </Avatar>
                 </div>
                 <div className="text-white">
@@ -95,9 +95,9 @@ const CardComponent = ({params} : {params: user}) => {
                                         await logout();
                                     }}
                                 >
-                                    <button type="submit">
-                                        <span className="max-sm:hidden">Logout</span>
-                                        <LogOut className="size-6 sm:hidden text-white"/>
+                                    <button type="submit" className="flex flex-between gap-2">
+                                        <span>Logout</span>
+                                        <LogOut className="size-6 text-dark dark:text-white"/>
                                     </button>
                                 </form>
                             </DropdownMenuItem>

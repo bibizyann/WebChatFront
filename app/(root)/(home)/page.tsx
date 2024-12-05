@@ -1,9 +1,14 @@
-import React from 'react'
+"use client"
+
+import React, {useEffect, useState} from 'react'
 
 const Home = () => {
-    const now = new Date()
-    const time = now.toLocaleTimeString('ru', { hour: '2-digit', minute: '2-digit' })
-    const date = (new Intl.DateTimeFormat('ru', { dateStyle: 'full' })).format(now);
+    const [dateState, setDateState] = useState(new Date());
+    useEffect(() => {
+        setInterval(() => setDateState(new Date()), 20000);
+    }, []);
+    const time = dateState.toLocaleTimeString('ru', { hour: '2-digit', minute: '2-digit' })
+    const date = (new Intl.DateTimeFormat('ru', { dateStyle: 'full' })).format(dateState);
 
     return(
         <section className='flex size-full flex-col gap-10 text-white'>
