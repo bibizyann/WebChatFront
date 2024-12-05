@@ -4,12 +4,13 @@ import Image from "next/image";
 import MobileNav from "./MobileNav";
 import { Button } from "@/components/ui/button"
 import ThemeToggle from "@/app/components/ThemeToggle";
-import {logout, verifySession} from "@/app/(root)/(auth)/session";
-import { LogOut } from 'lucide-react';
+import {getUser} from "@/app/(root)/getuser";
+import CardComponent from "@/app/components/CardComponent";
 
 const Navbar = async () => {
-    const session = await verifySession()
-    console.log(session)
+    const user = await getUser()
+    console.log(user)
+
     return (
         <nav className='flex flex-between fixed z-50 w-full bg-blue-3 dark:bg-dark-1 px-6 py-4 lg:px-10'>
             <Link href='/' className='flex items-center gap-1'>
@@ -20,22 +21,8 @@ const Navbar = async () => {
                 <ThemeToggle/>
             </div>
             <div className='flex-between gap-5'>
-                {session && session?.userId ? (
-                    <>
-                        <form
-                            action={async () => {
-                                "use server";
-
-                                await logout();
-                            }}
-                        >
-                            <button type="submit">
-                                <span className="max-sm:hidden">Logout</span>
-                                <LogOut className="size-6 sm:hidden text-white"/>
-                            </button>
-                        </form>
-
-                    </>
+                {user && user?.Id ? (
+                    <CardComponent params={user}/>
                 ) : (
                     <Button asChild variant="outline" className='bg-gradient hover:bg-white hover:text-black border-white'>
                         <a href="/registration" className='text-white no-underline'>
