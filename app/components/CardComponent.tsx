@@ -21,15 +21,6 @@ import {Button} from "@/components/ui/button";
 import {logout} from "@/app/(root)/(auth)/session";
 import {LogOut} from "lucide-react";
 
-interface user {
-    Id: number;
-    Username: string;
-    Email: string;
-    PasswordHash: string;
-    CreatedAt: string;
-    LastSeen: string;
-    AvatarUrl: string;
-}
 const CardComponent = ({params} : {params: user}) => {
     return (
         <Card className="w-[280px] h-[40px] bg-blue-3 dark:bg-dark-1 border-none">

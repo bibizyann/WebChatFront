@@ -1,9 +1,9 @@
-import 'server-only';
+'use server';
 import {cache} from "react";
 import axios from "axios";
 import {cookies} from "next/headers";
 
-export const getUser = cache(async () => {
+export const getUser = cache(async () : Promise<user> => {
     const cookie = cookies().toString()
     try {
         const response = await axios.get(
