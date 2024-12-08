@@ -27,7 +27,6 @@ interface MeetingModalProps {
 const MeetingModal = ({isOpen, onClose, title, className, children, handleClick, buttonText, image, buttonIcon} : MeetingModalProps) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogTrigger>Open</DialogTrigger>
             <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none dark:bg-dark-1 px-6 py-9 dark:text-white">
                 <div className="flex flex-col gap-6">
                     {image && (
