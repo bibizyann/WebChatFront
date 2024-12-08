@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Head from "next/head";
+import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['200'] });
@@ -25,6 +26,7 @@ export default function RootLayout({
         </Head>
         <body className={`${poppins.className} dark:bg-dark-2`}>
           {children}
+          <Toaster />
           <footer>
             {/* <p>© 2024 My Next.js App</p> */}
           </footer>
