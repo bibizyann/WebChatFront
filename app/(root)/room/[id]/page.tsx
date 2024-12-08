@@ -5,6 +5,8 @@ import {useState} from "react";
 import {useGetCallById} from "@/hooks/useGetCallById";
 import Loader from "@/app/components/Loader";
 import {useUser} from "@/hooks/useUser";
+import MeetingSetup from "@/app/components/MeetingSetup";
+import MeetingRoom from "@/app/components/MeetingRoom";
 
 const Room = ({params}: {params: {id: string}}) => {
     const [isSetupComplete, setIsSetupComplete] = useState(false)
@@ -24,9 +26,9 @@ const Room = ({params}: {params: {id: string}}) => {
             <StreamCall call={call}>
                 <StreamTheme>
                     {!isSetupComplete ? (
-                        'MeetingSetup'
+                        <MeetingSetup setIsSetupComplete={setIsSetupComplete}/>
                     ) : (
-                        'Meeting Room'
+                        <MeetingRoom />
                     )}
                 </StreamTheme>
             </StreamCall>
