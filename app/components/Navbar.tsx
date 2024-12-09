@@ -1,14 +1,16 @@
+"use client"
+
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
 import { Button } from "@/components/ui/button"
 import ThemeToggle from "@/app/components/ThemeToggle";
-import {getUser} from "@/app/(root)/getuser";
 import CardComponent from "@/app/components/CardComponent";
+import {useUser} from "@/hooks/useUser";
 
-const Navbar = async () => {
-    const user = await getUser()
+const Navbar = () => {
+    const {user, isLoaded} = useUser()
 
     return (
         <nav className='flex flex-between fixed z-50 w-full bg-blue-3 dark:bg-dark-1 px-6 py-4 lg:px-10'>
