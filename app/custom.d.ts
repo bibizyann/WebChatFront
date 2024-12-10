@@ -12,3 +12,14 @@ declare namespace JSX {
     };
   }
 }
+
+
+declare interface user {
+  Id: number;
+  Username: string;
+  Email: string;
+  PasswordHash: string;
+  CreatedAt: string;
+  LastSeen: string;
+  AvatarUrl: string;
+}

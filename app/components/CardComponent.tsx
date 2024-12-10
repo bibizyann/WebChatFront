@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Card,
     CardContent,
@@ -18,95 +18,85 @@ import {
     DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
-import {logout} from "@/app/(root)/(auth)/session";
 import {LogOut} from "lucide-react";
+import ChangeAvatar from "@/app/components/ChangeAvatar";
+import {useLogout} from "@/hooks/useLogout";
 
-interface user {
-    Id: number;
-    Username: string;
-    Email: string;
-    PasswordHash: string;
-    CreatedAt: string;
-    LastSeen: string;
-    AvatarUrl: string;
-}
 const CardComponent = ({params} : {params: user}) => {
-    return (
-        <Card className="w-[280px] h-[40px] bg-blue-3 dark:bg-dark-1 border-none">
-            <CardContent className="flex flex-auto gap-3 justify-around justify-items-stretch content-center items-center">
-                <div>
-                    <Avatar>
-                        <AvatarImage src={params.AvatarUrl} alt="@shadcn"/>
-                        <AvatarFallback className="dark:bg-gray-500">{params.Username.substring(0,1).toUpperCase()}</AvatarFallback>
-                    </Avatar>
-                </div>
-                <div className="text-white">
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="outline" className='bg-gradient hover:bg-white hover:text-black border-none'>
-                                {params.Username}
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56">
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuGroup>
-                                <DropdownMenuItem>
-                                    Profile
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Billing
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Settings
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    Keyboard shortcuts
-                                </DropdownMenuItem>
-                            </DropdownMenuGroup>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuGroup>
-                                <DropdownMenuItem>Team</DropdownMenuItem>
-                                <DropdownMenuSub>
-                                    <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-                                    <DropdownMenuPortal>
-                                        <DropdownMenuSubContent>
-                                            <DropdownMenuItem>Email</DropdownMenuItem>
-                                            <DropdownMenuItem>Message</DropdownMenuItem>
-                                            <DropdownMenuSeparator />
-                                            <DropdownMenuItem>More...</DropdownMenuItem>
-                                        </DropdownMenuSubContent>
-                                    </DropdownMenuPortal>
-                                </DropdownMenuSub>
-                                <DropdownMenuItem>
-                                    New Team
-                                </DropdownMenuItem>
-                            </DropdownMenuGroup>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>GitHub</DropdownMenuItem>
-                            <DropdownMenuItem>Support</DropdownMenuItem>
-                            <DropdownMenuItem disabled>API</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>
-                                <form
-                                    action={async () => {
-                                        "use server";
+    const [choseAvatar, setChoseAvatar] = useState(params.AvatarUrl)
+    const [isOpen, setIsOpen] = useState(false)
+    const {isLogout, setIsLogout} = useLogout()
 
-                                        await logout();
-                                    }}
-                                >
-                                    <button type="submit" className="flex flex-between gap-2">
+    return (
+        <>
+            <ChangeAvatar params={{email: params.Email ,isOpen: isOpen, setIsOpen: setIsOpen, currAvatar: choseAvatar, setCurrAvatar: setChoseAvatar}}/>
+            <Card className="w-[280px] h-[40px] bg-blue-3 dark:bg-dark-1 border-none">
+                <CardContent className="flex flex-auto gap-3 justify-around justify-items-stretch content-center items-center">
+                    <div>
+                        <Avatar>
+                            <AvatarImage src={choseAvatar} alt="@shadcn"/>
+                            <AvatarFallback className="dark:bg-gray-500">{params.Username.substring(0,1).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                    </div>
+                    <div className="text-white">
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="outline" className='bg-gradient hover:bg-white hover:text-black border-none'>
+                                    {params.Username}
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="w-56">
+                                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuGroup>
+                                    <DropdownMenuItem>
+                                        Profile
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Button variant="outline" className="border-none" onClick={() => setIsOpen(true)}>Change Avatar</Button>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        Settings
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        Keyboard shortcuts
+                                    </DropdownMenuItem>
+                                </DropdownMenuGroup>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuGroup>
+                                    <DropdownMenuItem>Team</DropdownMenuItem>
+                                    <DropdownMenuSub>
+                                        <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+                                        <DropdownMenuPortal>
+                                            <DropdownMenuSubContent>
+                                                <DropdownMenuItem>Email</DropdownMenuItem>
+                                                <DropdownMenuItem>Message</DropdownMenuItem>
+                                                <DropdownMenuSeparator />
+                                                <DropdownMenuItem>More...</DropdownMenuItem>
+                                            </DropdownMenuSubContent>
+                                        </DropdownMenuPortal>
+                                    </DropdownMenuSub>
+                                    <DropdownMenuItem>
+                                        New Team
+                                    </DropdownMenuItem>
+                                </DropdownMenuGroup>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>GitHub</DropdownMenuItem>
+                                <DropdownMenuItem>Support</DropdownMenuItem>
+                                <DropdownMenuItem disabled>API</DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>
+                                    <button type="submit" className="flex flex-between gap-2" onClick={() => setIsLogout(true)}>
                                         <span>Logout</span>
                                         <LogOut className="size-6 text-dark dark:text-white"/>
                                     </button>
-                                </form>
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                </div>
-            </CardContent>
-        </Card>
-
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </div>
+                </CardContent>
+            </Card>
+        </>
     );
 };
 

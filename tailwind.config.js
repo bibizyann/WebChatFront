@@ -26,6 +26,15 @@ module.exports = {
 			cyan: {
 				'1': '#0891b2',
 			},
+			orange: {
+				1: '#FF742E',
+			},
+			purple: {
+				1: '#830EF9',
+			},
+			yellow: {
+				1: '#F9A90E',
+			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

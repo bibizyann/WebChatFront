@@ -1,6 +1,7 @@
 'use client';
 
 import React, {ReactNode, useEffect} from 'react'
+import {StreamVideoProvider} from "@/providers/StreamClientProvider";
 
 const RootLayout = ({children}: {children: ReactNode}) => {
     useEffect(() => {
@@ -37,7 +38,9 @@ const RootLayout = ({children}: {children: ReactNode}) => {
 
     return(
         <main>
-            {children}
+            <StreamVideoProvider>
+                {children}
+            </StreamVideoProvider>
         </main>
     )
 }
