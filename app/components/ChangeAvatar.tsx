@@ -8,15 +8,36 @@ import {
 } from "@/components/ui/dialog"
 import {avatarLinks} from "@/env-constants/avatarLinks";
 import AvatarButton from "@/app/components/AvatarButton";
+import axios from "axios";
 
 interface changing {
+    email: string,
     isOpen: boolean,
     setIsOpen: Dispatch<React.SetStateAction<boolean>>
     currAvatar: string,
     setCurrAvatar: Dispatch<React.SetStateAction<string>>
 }
 
+interface userAvatar {
+    email: string,
+    AvatarUrl: string,
+}
 const ChangeAvatar = ({params} : {params: changing}) => {
+    const handleSubmit = async ({email, AvatarUrl} : userAvatar) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:8080/avatar",
+                {email, AvatarUrl},
+                {
+                    withCredentials: true,
+                }
+            );
+            console.log("Registration successful:", response.data);
+        } catch (error) {
+            console.error("There was a problem with the registration:", error);
+        }
+    };
+
     return (
         <Dialog open={params.isOpen}>
             <DialogContent className="sm:max-w-[400px]">
@@ -33,7 +54,10 @@ const ChangeAvatar = ({params} : {params: changing}) => {
                 <DialogFooter>
                     <DialogClose>
                         {/*Должна быть ручка для отпраки относителньой ссылки в баазу данных*/}
-                        <Button type="submit" onClick={() => params.setIsOpen(false)}>Save changes</Button>
+                        <Button type="submit" onClick={() => {
+                            params.setIsOpen(false)
+                            handleSubmit({email: params.email, AvatarUrl: params.currAvatar})
+                        }}>Save changes</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>

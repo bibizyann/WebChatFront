@@ -2,6 +2,7 @@
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import PasswordRecovery from "@/app/components/PasswordRecovery";
 const LoginComponent: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -32,7 +33,7 @@ const LoginComponent: React.FC = () => {
       console.error("There was a problem with the registration:", error);
     }
   };
-  // TODO: create action to forgot password
+
   return (
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -79,9 +80,7 @@ const LoginComponent: React.FC = () => {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a href="#" className="font-semibold text-blue-600 hover:text-blue-500 no-underline">
-                      Forgot password?
-                    </a>
+                    <PasswordRecovery/>
                   </div>
                 </div>
                 <div className="mt-2">

@@ -29,7 +29,7 @@ const CardComponent = ({params} : {params: user}) => {
 
     return (
         <>
-            <ChangeAvatar params={{isOpen: isOpen, setIsOpen: setIsOpen, currAvatar: choseAvatar, setCurrAvatar: setChoseAvatar}}/>
+            <ChangeAvatar params={{email: params.Email ,isOpen: isOpen, setIsOpen: setIsOpen, currAvatar: choseAvatar, setCurrAvatar: setChoseAvatar}}/>
             <Card className="w-[280px] h-[40px] bg-blue-3 dark:bg-dark-1 border-none">
                 <CardContent className="flex flex-auto gap-3 justify-around justify-items-stretch content-center items-center">
                     <div>
