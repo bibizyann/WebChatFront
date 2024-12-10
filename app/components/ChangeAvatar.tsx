@@ -26,7 +26,7 @@ const ChangeAvatar = ({params} : {params: changing}) => {
     const handleSubmit = async ({email, AvatarUrl} : userAvatar) => {
         try {
             const response = await axios.post(
-                "http://localhost:8080/avatar",
+                "https://webchatmirea.onrender.com/avatar",
                 {email, AvatarUrl},
                 {
                     withCredentials: true,

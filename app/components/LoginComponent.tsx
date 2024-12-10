@@ -22,7 +22,7 @@ const LoginComponent: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/login",
+        "https://webchatmirea.onrender.com/login",
         formData,
         {
           withCredentials: true,
