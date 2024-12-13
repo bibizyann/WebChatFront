@@ -33,7 +33,7 @@ export async function verifySession() {
 export async function logout() {
     try {
         const response = await axios.post(
-            "https://webchatmirea.onrender.com/logout",
+            "http://localhost:8080/logout",
             {
                 withCredentials: true,
             }

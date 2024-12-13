@@ -29,7 +29,7 @@ const RegistrationComponent: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "https://webchatmirea.onrender.com/signup",
+        "http://localhost:8080/signup",
         formData,
         {
           withCredentials: true,

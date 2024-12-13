@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
-
+import "react-datepicker/dist/react-datepicker.css";
 const poppins = Poppins({ subsets: ['latin'], weight: ['200'] });
 
 export const metadata: Metadata = {

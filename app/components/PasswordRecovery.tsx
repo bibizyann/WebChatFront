@@ -30,7 +30,7 @@ const PasswordRecovery = () => {
 
         try {
             const response = await axios.post(
-                "https://webchatmirea.onrender.com/passrcv",
+                "http://localhost:8080/passrcv",
                 formData,
                 {
                     withCredentials: true,

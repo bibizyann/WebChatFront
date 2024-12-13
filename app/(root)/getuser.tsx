@@ -7,7 +7,7 @@ export const getUser = cache(async () : Promise<user> => {
     const cookie = cookies().toString()
     try {
         const response = await axios.get(
-            "https://webchatmirea.onrender.com/validate",
+            "http://localhost:8080/validate",
             {
                 headers: {'Cookie': cookie},
             }
