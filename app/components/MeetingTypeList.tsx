@@ -124,18 +124,18 @@ const MeetingTypeList = () => {
                         </label>
                         <DatePicker
                             selected={values.dateTime}
-                            onChange={(date) => setValues({ ...values, dateTime: date! })}
+                            onSelect={(date) => setValues({ ...values, dateTime: date! })}
+                            showTimeSelect
+                            showMonthYearDropdown={true}
+                            selectsMultiple={null}
                             locale={ru}
                             minDate={subDays(new Date(), 0)}
                             maxDate={addDays(new Date(), 30)}
-                            selectsMultiple={null}
-                            showTimeSelect
                             timeFormat="HH:mm"
                             timeIntervals={15}
                             timeCaption="time"
                             dateFormat="d MMMM, yyyy HH:mm"
                             className="w-full rounded bg-gray-100 dark:bg-dark-3 p-2 focus:outline-none"
-                            showMonthYearDropdown={true}
                         />
                     </div>
                 </MeetingModal>
@@ -163,6 +163,21 @@ const MeetingTypeList = () => {
                 buttonText="Start Meeting"
                 handleClick={createMeeting}
             />
+
+            <MeetingModal
+                isOpen={meetingState === 'isJoiningMeeting'}
+                onClose={() => setMeetingState(undefined)}
+                title="Type the link here"
+                className="text-center"
+                buttonText="Join Meeting"
+                handleClick={() => router.push(values.link)}
+            >
+                <input
+                    placeholder="Meeting link"
+                    onChange={(e) => setValues({ ...values, link: e.target.value })}
+                    className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+            </MeetingModal>
         </section>
     );
 };
