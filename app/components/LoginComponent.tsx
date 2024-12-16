@@ -1,29 +1,33 @@
 "use client";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React from "react";
 import PasswordRecovery from "@/app/components/PasswordRecovery";
+import {FormState, LoginFormSchema} from "@/lib/definitions";
+import {useFormState, useFormStatus} from "react-dom";
+import {Button} from "@/components/ui/button";
 const LoginComponent: React.FC = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const handleSubmit = async (state: FormState, formData: FormData) => {
+    const validatedFields = LoginFormSchema.safeParse({
+      email: formData.get('email'),
+      password: formData.get('password'),
+    });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const errorMessage = { message: 'Invalid login credentials.' };
+
+    if (!validatedFields.success) {
+      return {
+        errors: validatedFields.error.flatten().fieldErrors,
+      };
+    }
+
+    const {email, password } = validatedFields.data;
 
     try {
       const response = await axios.post(
         "http://localhost:8080/login",
-        formData,
+          {email, password},
         {
           withCredentials: true,
         }
@@ -33,6 +37,8 @@ const LoginComponent: React.FC = () => {
       console.error("There was a problem with the registration:", error);
     }
   };
+
+  const [state, action] = useFormState(handleSubmit, undefined);
 
   return (
       <>
@@ -49,7 +55,7 @@ const LoginComponent: React.FC = () => {
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit}>
+            <form action={action} method="POST" className="space-y-6">
               <div>
                 <div className="flex items-center justify-between">
                   <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900 dark:text-white">
@@ -61,8 +67,6 @@ const LoginComponent: React.FC = () => {
                       id="email"
                       name="email"
                       type="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
                       autoComplete="email"
                       className="block w-full rounded-md dark:bg-[#545464] px-3 py-1.5 text-base
@@ -73,6 +77,7 @@ const LoginComponent: React.FC = () => {
                   />
                 </div>
               </div>
+              {state?.errors?.email && <p>{state.errors.email}</p>}
 
               <div>
                 <div className="flex items-center justify-between">
@@ -88,8 +93,6 @@ const LoginComponent: React.FC = () => {
                       id="password"
                       name="password"
                       type="password"
-                      value={formData.password}
-                      onChange={handleChange}
                       required
                       autoComplete="current-password"
                       className="block w-full rounded-md dark:bg-[#545464] px-3 py-1.5 text-base
@@ -99,14 +102,19 @@ const LoginComponent: React.FC = () => {
                   />
                 </div>
               </div>
+              {state?.errors?.password && (
+                  <div>
+                    <p>Password must:</p>
+                    <ul>
+                      {state.errors.password.map((error) => (
+                          <li key={error}>- {error}</li>
+                      ))}
+                    </ul>
+                  </div>
+              )}
 
               <div>
-                <button
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                >
-                  Sign in
-                </button>
+                <SignInButton />
               </div>
             </form>
 
@@ -121,5 +129,15 @@ const LoginComponent: React.FC = () => {
       </>
   );
 };
+
+export function SignInButton() {
+  const { pending } = useFormStatus();
+
+  return (
+      <Button aria-disabled={pending} type="submit" className="mt-2 w-full">
+        {pending ? 'Submitting...' : 'Login'}
+      </Button>
+  );
+}
 
 export default LoginComponent;
